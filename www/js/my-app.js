@@ -15,10 +15,8 @@ var app = new Framework7({
     },
     // Add default routes
     routes: [
-      {
-        path: '/about/',
-        url: 'about.html',
-      },
+      {path: '/juego/', url: 'juego.html',},
+      {path: '/index/', url: 'index.html',},
     ]
     // ... other parameters
   });
@@ -37,8 +35,34 @@ $$(document).on('page:init', function (e) {
 })
 
 // Option 2. Using live 'page:init' event handlers for each page
-$$(document).on('page:init', '.page[data-name="about"]', function (e) {
+$$(document).on('page:init', '.page[data-name="juego"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
-    console.log(e);
-    alert('Hello');
-})
+    console.log("vista juego")
+
+    /* JUAN: Agrego el boton terminar para que llame a funcion */
+    $$('#btnTerminar').on('click', fnMuestraGanador);
+
+    })
+
+$$(document).on('page:init', '.page[data-name="index"]', function (e) {
+    // Do something here when page with data-name="about" attribute loaded and initialized
+    console.log("vista index")
+
+    $$('#btnJugar').on('click', fnTomarValores);
+    /* JUAN: Cambie el btn Jugar de lugar, estaba en juego.html*/
+    
+    })
+
+
+  function fnTomarValores() {
+      nombre1 = $$('#nombre1').val();
+      nombre2 = $$('#nombre2').val();
+  
+      mainView.router.navigate('/juego/');
+  }
+
+  function fnMuestraGanador() {
+    /* JUAN: ACA DEBERIA MOSTRAR EL MENSAJE DEL GANADOR, RECIBIENDO ALGUN PARAMETRO... Se podria imprimir un DIV
+    con el mensaje en Juego.html (Con un OK, que si lo toco va al index nuevamente)*/
+    /*ACA PODRIA CARGAR LA VISTA DEL INDEX: mainView.router.navigate('/index/');*/
+  }
