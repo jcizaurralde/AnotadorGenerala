@@ -13,6 +13,47 @@
     </div>-->
 
     <div class="page-content">
+        <!--MAXI:Aca se encuentra el popup-->
+        <div class="popup my-popup">
+            <div class="view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-bg"></div>
+                        <div class="navbar-inner">
+                            <div class="title">Popup</div>
+                            <div class="right">
+                                <!--MAXI:Para cerrar el popup (se puede añadir una funcion para que ponga el valor que eleji y lo multiplique)-->
+                                <a class="link popup-close">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--MAXI:El contenido del popup puesto con "Selects"-->
+                    <div class="page-content">
+                        <div class="list inline-labels no-hairlines-md">
+                        <li class="item-content item-input">
+                            <div class="item-media">
+                              <i class="icon demo-list-icon"></i>
+                            </div>
+                            <div class="item-inner">
+                              <div class="item-title item-label">Dados Iguales</div>
+                              <div class="item-input-wrap input-dropdown-wrap">
+                                  <br>
+                                <select placeholder="Please choose...">
+                                  <option value="uno">1</option>
+                                  <option value="dos">2</option>
+                                  <option value="tres">3</option>
+                                  <option value="cuatro">4</option>
+                                  <option value="cinco">5</option>
+                                  <option value="seis">6</option>
+                                </select>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="block-title"><h2 class="text-align-center"> Anotador </h2></div>
 
@@ -24,7 +65,8 @@
             </div>
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Uno</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <!--MAXI: Dentro de este div, hice un href que al apretar me abre un popup con las opciones-->
+                <div class="col-33"><p class="text-align-center"><a href="#" data-popup=".my-popup" class="popup-open">-</a></p></div>
                 <div class="col-33"><p class="text-align-center">-</p></div>
             </div>
             <div class="row">
