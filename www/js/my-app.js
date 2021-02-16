@@ -22,6 +22,8 @@ var app = new Framework7({
   });
 
 var mainView = app.views.create('.view-main');
+var nombre1 = "";
+var nombre2 = "";
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
@@ -39,6 +41,10 @@ $$(document).on('page:init', '.page[data-name="juego"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
     console.log("vista juego")
 
+  /* JUAN: Le indicamos que escriba el nombre de cada jugador*/
+    $$('#J1').html('<p>'+nombre1+'</p>');
+    $$('#J2').html('<p>'+nombre2+'</p>');
+
     /* JUAN: Agrego el boton terminar para que llame a funcion */
     $$('#btnTerminar').on('click', fnMuestraGanador);
 
@@ -49,7 +55,7 @@ $$(document).on('page:init', '.page[data-name="index"]', function (e) {
     console.log("vista index")
 
     $$('#btnJugar').on('click', fnTomarValores);
-    /* JUAN: Cambie el btn Jugar de lugar, estaba en juego.html*/
+   
     
     })
 
