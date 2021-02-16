@@ -39,16 +39,13 @@ $$(document).on('page:init', function (e) {
 // Option 2. Using live 'page:init' event handlers for each page
 $$(document).on('page:init', '.page[data-name="juego"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
-    console.log("vista juego")
-
+    console.log("vista juego");
   /* JUAN: Le indicamos que escriba el nombre de cada jugador*/
     $$('#J1').html('<p>'+nombre1+'</p>');
     $$('#J2').html('<p>'+nombre2+'</p>');
-
     /* JUAN: Agrego el boton terminar para que llame a funcion */
     $$('#btnTerminar').on('click', fnMuestraGanador);
-
-    })
+    });
 
 $$(document).on('page:init', '.page[data-name="index"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
@@ -58,8 +55,6 @@ $$(document).on('page:init', '.page[data-name="index"]', function (e) {
    
     
     })
-
-
   function fnTomarValores() {
       nombre1 = $$('#nombre1').val();
       nombre2 = $$('#nombre2').val();
