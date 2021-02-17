@@ -48,7 +48,8 @@ $$(document).on('page:init', '.page[data-name="juego"]', function (e) {
     $$('#J2').html('<p>'+nombre2+'</p>');
 
     /* JUAN: Agrego la funcion para enviar valor seleccionado del popup, cuando tocamos "Cerrar" */
-    $$('#btnCerrar').on('click', fnEnviaValor);
+    $$('#btnCerrar').on('click', fnEnviaValorDados);
+    $$('#btnCerrar2').on('click', fnEnviaValorJuegos);
 
     /* JUAN: Agrego el boton terminar para que llame a funcion */
     $$('#btnTerminar').on('click', fnMuestraGanador);
@@ -83,22 +84,27 @@ $$(document).on('page:init', '.page[data-name="index"]', function (e) {
   con el valor "checked" (el radio seleccionado), que la guarde en una variable global "seleccion". Luego se lo
   enviamos a #J11 como valor para que quede en el div
   DAI: agregue un if/else para poder agregar las opciones del otro pop-up, el de las categorias armadas*/
-  function fnEnviaValor() {
-    if (document=seleccion){
+  function fnEnviaValorDados() {
     for (var i = 0; i < document.seleccion.opcion.length; i++) {
       if (document.seleccion.opcion[i].checked)
         break;
     }
     seleccion = document.seleccion.opcion[i].value
     $$('#J11').val(seleccion);
+  }
 
-  } else {
+  /*JUAN: Dai, saque el if/else, porque no funcionaba correctamente, ponia los valores directamente siempre en el popup2
+  entonces arme una funcion aparte para los juegos armados ... si elegia los dados, igualmente me ponia puntaje en 
+  escalera por ejemplo */
+  function fnEnviaValorJuegos() {
     for (var i = 0; i < document.seleccion2.opcion2.length; i++) {
       if (document.seleccion2.opcion2[i].checked)
         break;
     }
     seleccion2 = document.seleccion2.opcion2[i].value
     $$('#J17').val(seleccion2);
-  }
-    
-  }
+}
+
+/* HABRIA QUE HACER UN FOR PARA QUE RECORRA DESDE EL J11 (PARA EL JUGADOR 1) Y J22 (PARA EL JUGADOR 2)
+SUMANDO DE UNO EN UNO J11...J12...J13, PARA QUE PODAMOS ENVIARLES LOS VALORES A TODOS ESOS INPUTS QUE FALTAN */
+

@@ -17,29 +17,7 @@
                         </div>
                     </div>
                     <!--MAXI:El contenido del popup puesto con "Selects"-->
-                    <div class="page-content">
-                        <!--<div class="list inline-labels no-hairlines-md">
-                        <li class="item-content item-input">
-                            <div class="item-media">
-                              <i class="icon demo-list-icon"></i>
-                            </div>
-                            <div class="item-inner">
-                              <div class="item-title item-label">Seleccionar</div>
-                              <div class="item-input-wrap input-dropdown-wrap">
-                                  <br>
-                                <select placeholder="Please choose...">
-                                  <option value="uno">1</option>
-                                  <option value="dos">2</option>
-                                  <option value="tres">3</option>
-                                  <option value="cuatro">4</option>
-                                  <option value="cinco">5</option>
-                                  <option value="seis">6</option>
-                                </select>
-                              </div>
-                            </div>
-                          </li>
-                        </div>-->
-                        
+                    <div class="page-content"> 
                         <div class="block-title">Dados</div>
                         <div class="block-header">Seleccione cuantas veces se repite el dado</div>
                         <div class="list">
@@ -47,10 +25,10 @@
                                 <ul>
                                     <li>
                                         <label class="item-radio item-radio-icon-end item-content">
-                                            <input type="radio" name="opcion" value="-" id="0" checked />
+                                            <input type="radio" name="opcion" value="-" id="vacio" checked />
                                             <i class="icon icon-radio"></i>
                                             <div class="item-inner">
-                                                <div class="item-title"></div>
+                                                <div class="item-title">Vacío</div>
                                             </div>
                                         </label>
                                     </li>
@@ -133,36 +111,11 @@
                         <div class="navbar-inner">
                             <div class="title"></div>
                             <div class="right">
-                                <!--MAXI:Para cerrar el popup (se puede añadir una funcion para que ponga el valor que eleji y lo multiplique)-->
-                                <a class="link popup-close" id="btnCerrar">Cerrar</a>
+                                <a class="link popup-close" id="btnCerrar2">Cerrar</a>
                             </div>
                         </div>
                     </div>
-                    <!--MAXI:El contenido del popup puesto con "Selects"-->
                     <div class="page-content">
-                        <!--<div class="list inline-labels no-hairlines-md">
-                        <li class="item-content item-input">
-                            <div class="item-media">
-                              <i class="icon demo-list-icon"></i>
-                            </div>
-                            <div class="item-inner">
-                              <div class="item-title item-label">Seleccionar</div>
-                              <div class="item-input-wrap input-dropdown-wrap">
-                                  <br>
-                                <select placeholder="Please choose...">
-                                  <option value="uno">1</option>
-                                  <option value="dos">2</option>
-                                  <option value="tres">3</option>
-                                  <option value="cuatro">4</option>
-                                  <option value="cinco">5</option>
-                                  <option value="seis">6</option>
-                                </select>
-                              </div>
-                            </div>
-                          </li>
-                        </div>-->
-                        
-                        <!--DAI:Pop-up de las categorias armadas-->
                         <div class="block-title">Categorías</div>
                         <div class="block-header">Seleccione la opción que desee</div>
                         <div class="list">
@@ -170,7 +123,16 @@
                                 <ul>
                                     <li>
                                         <label class="item-radio item-radio-icon-end item-content">
-                                            <input type="radio" name="opcion2" value="25" id="servida" checked />
+                                            <input type="radio" name="opcion2" value="-" id="vacio2" checked />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Vacío</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion2" value="25" id="servida"/>
                                             <i class="icon icon-radio"></i>
                                             <div class="item-inner">
                                                 <div class="item-title">Servida</div>
@@ -189,7 +151,7 @@
                             
                                     <li>
                                         <label class="item-radio item-radio-icon-end item-content">
-                                            <input type="radio" name="opcion" value="X" id="X" />
+                                            <input type="radio" name="opcion2" value="X" id="X2" />
                                             <i class="icon icon-radio"></i>
                                             <div class="item-inner">
                                                 <div class="item-title">Tachar</div>
@@ -212,65 +174,95 @@
                 <div class="col-33"><p class="text-align-center" id="J1">Jugador 1</p></div>
                 <div class="col-33"><p class="text-align-center" id="J2">Jugador 2</p></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Uno</p></div>
                 <!--MAXI: Dentro de este div, hice un href que al apretar me abre un popup con las opciones-->
                 <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
-                <input class="text-align-center" placeholder="-" value="" id="J11"></input></a></div>
-
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                    <input class="text-align-center" placeholder="-" value="" id="J11"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J22"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Dos</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J12"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J23"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Tres</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J13"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J24"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Cuatro</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J14"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J25"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Cinco</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J15"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J26"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Seis</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J26"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J27"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Escalera</p></div>
                 <!--DAI: pop up de las categorias (juegos armados)-->
                 <div class="col-33"><a href="#" data-popup=".my-popup2" class="popup-open">
                     <input class="text-align-center" placeholder="-" value="" id="J17"></input></a></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J28"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Full</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup2" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J18"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J29"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Poker</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup2" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J19"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J30"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Generala</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup2" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J20"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J31"></input></a></div>
             </div>
+
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Doble Generala</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
-                <div class="col-33"><p class="text-align-center">-</p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup2" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J21"></input></a></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                    <input class="text-align-center" placeholder="-" value="" id="J32"></input></a></div>
             </div>
         </div>
         
