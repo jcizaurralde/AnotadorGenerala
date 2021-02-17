@@ -25,6 +25,7 @@ var mainView = app.views.create('.view-main');
 var nombre1 = "";
 var nombre2 = "";
 var seleccion ="";
+var seleccion2="";
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
@@ -80,15 +81,24 @@ $$(document).on('page:init', '.page[data-name="index"]', function (e) {
   /* JUAN: Aca hago una funcion que lo que hace, es del documento juego.html, toma "seleccion" que es el formulario
   de opciones del popup, recorre todos los boton radio (que tienen el name=opcion), y le decimos que si hay una opcion
   con el valor "checked" (el radio seleccionado), que la guarde en una variable global "seleccion". Luego se lo
-  enviamos a #J11 como valor para que quede en el div*/
+  enviamos a #J11 como valor para que quede en el div
+  DAI: agregue un if/else para poder agregar las opciones del otro pop-up, el de las categorias armadas*/
   function fnEnviaValor() {
+    if (document=seleccion){
     for (var i = 0; i < document.seleccion.opcion.length; i++) {
       if (document.seleccion.opcion[i].checked)
         break;
     }
     seleccion = document.seleccion.opcion[i].value
-    
     $$('#J11').val(seleccion);
-    
+
+  } else {
+    for (var i = 0; i < document.seleccion2.opcion2.length; i++) {
+      if (document.seleccion2.opcion2[i].checked)
+        break;
+    }
+    seleccion2 = document.seleccion2.opcion2[i].value
+    $$('#J17').val(seleccion2);
+  }
     
   }
