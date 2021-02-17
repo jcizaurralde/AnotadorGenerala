@@ -1,17 +1,6 @@
 <!-- We don't need a full layout in this file because this page will be parsed with Ajax.  -->
 <div class="page" data-name="juego">
-    <!--<div class="navbar">
-        <div class="navbar-inner sliding">
-        <div class="left">
-            <a href="#" class="link back">
-            <i class="icon icon-back"></i>
-            <span class="ios-only">Volver a inicio</span>
-            </a>
-        </div>
-        <div class="title">Juego</div>
-        </div>
-    </div>-->
-
+    
     <div class="page-content">
         <!--MAXI:Aca se encuentra el popup-->
         <div class="popup my-popup">
@@ -20,22 +9,22 @@
                     <div class="navbar">
                         <div class="navbar-bg"></div>
                         <div class="navbar-inner">
-                            <div class="title">Popup</div>
+                            <div class="title"></div>
                             <div class="right">
                                 <!--MAXI:Para cerrar el popup (se puede añadir una funcion para que ponga el valor que eleji y lo multiplique)-->
-                                <a class="link popup-close">Close</a>
+                                <a class="link popup-close" id="btnCerrar">Cerrar</a>
                             </div>
                         </div>
                     </div>
                     <!--MAXI:El contenido del popup puesto con "Selects"-->
                     <div class="page-content">
-                        <div class="list inline-labels no-hairlines-md">
+                        <!--<div class="list inline-labels no-hairlines-md">
                         <li class="item-content item-input">
                             <div class="item-media">
                               <i class="icon demo-list-icon"></i>
                             </div>
                             <div class="item-inner">
-                              <div class="item-title item-label">Dados Iguales</div>
+                              <div class="item-title item-label">Seleccionar</div>
                               <div class="item-input-wrap input-dropdown-wrap">
                                   <br>
                                 <select placeholder="Please choose...">
@@ -49,13 +38,94 @@
                               </div>
                             </div>
                           </li>
+                        </div>-->
+                        
+                        <div class="block-title">Dados</div>
+                        <div class="block-header">Seleccione cuantas veces se repite el dado</div>
+                        <div class="list">
+                            <form name="seleccion">
+                                <ul>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="-" id="0" checked />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title"></div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="1" id="1"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Uno (1)</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="2" id="2" />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Dos (2)</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="3" id="3" />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Tres (3)</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="4" id="4" />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Cuatro (4)</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="5" id="5" />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Cinco (5)</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="6" id="6" />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Seis (6)</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="opcion" value="X" id="X" />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">Tachar</div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="block-title"><h2 class="text-align-center"> Anotador </h2></div>
+        <div class="block-title"><h2 class="text-align-center"> En juego </h2></div>
 
         <div class="block">   
             <div class="row">
@@ -66,7 +136,9 @@
             <div class="row">
                 <div class="col-33"><p class="text-align-center">Uno</p></div>
                 <!--MAXI: Dentro de este div, hice un href que al apretar me abre un popup con las opciones-->
-                <div class="col-33"><p class="text-align-center"><a href="#" data-popup=".my-popup" class="popup-open">-</a></p></div>
+                <div class="col-33"><a href="#" data-popup=".my-popup" class="popup-open">
+                <input class="text-align-center" placeholder="-" value="" id="J11"></input></a></div>
+
                 <div class="col-33"><p class="text-align-center">-</p></div>
             </div>
             <div class="row">
