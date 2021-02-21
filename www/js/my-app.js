@@ -1,4 +1,5 @@
 // If we need to use custom DOM library, let's save it to $$ variable:
+// If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
 var app = new Framework7({
@@ -23,8 +24,9 @@ var app = new Framework7({
 var mainView = app.views.create('.view-main');
 var nombre1 = "";
 var nombre2 = "";
-var Casilla ="";
-
+var Casilla = "";
+var valorBase = 0;
+var valorTotalJ1 = 0;
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
@@ -47,50 +49,58 @@ $$(document).on('page:init', '.page[data-name="juego"]', function (e) {
     $$('#n2').html('<p>'+nombre2+'</p>');
     //FUNCIONA NO TOCAR.
     $$('.popup-open').on('click', fnCasilla);
+    $$('.game').on('click', fnPonerValorBase);
+    //$$('.total').on('click', fnMostrarTotal);
 
     function fnCasilla (){
       Casilla = this.id;
       console.log('Entre en esta casilla'+Casilla);
 
     }
-        
+
         $$('.my-popup').on('popup:opened', function(){
           console.log('Vista PopUp1');
           $$('.Dado').on('click', function fnValor(){
             datoElegido = this.id;
-            //calcularDato(elDatoTocado );
             console.log('Estoy poniendo este dato' +datoElegido);
             $$('#dt'+Casilla).val(datoElegido);
-             
           });
         });
     //-----------------------
 
-
-
-
       $$('.my-popup2').on('popup:opened', function(){
         console.log('Vista PopUp2');
-        //escalera vale "20", servida "25"
+       
         $$('.Jugada').on('click', function fnValor(){
-          //El valor de los popupts
-          valorElegido = this.value;
-          valorTotal = 0;
-          //valorTotal = parseInt(valorTotal);
-          valorTotal = $$('#dt'+Casilla).val()
-          
-
-          $$('#dt'+Casilla).val(valorTotal);
-
-        });
+              valorElegido = this.value;
+                if (isNaN(valorElegido)){
+                  $$('#dt'+Casilla).val(valorElegido);
+                  }else {
+                    $$('#dt'+Casilla).val(parseInt(valorElegido) + parseInt(valorBase));
+                  }
+             });
       });
     });
+
+    function fnPonerValorBase(){
+      valorBase = $$(this).attr('valorBase');
+    }
+    /*function fnMostrarTotal(){
+      valorTotalJ1= $$('#J11').this.value()+$$('#J12').this.value()+$$('#J13').this.value()+$$('#J14').this.value()+$$('#J15').this.value()+$$('#J16').this.value()+$$('#J31').this.value()+$$('#J32').this.value()+$$('#J33').this.value()+$$('#J34').this.value()+$$('#J35').this.value();
+      //valorTotalJ1 = parseInt(valorTotalJ1);
+      if ()
+        console.log('Total'+valorTotalJ1)
+      $$('#TotalJ1').val(valorTotalJ1);
+
+  }*/
+
+
 $$(document).on('page:init', '.page[data-name="index"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
     console.log("vista index")
 
     $$('#btnJugar').on('click', fnTomarNombres);
-   
+    
     
     });
 
@@ -101,10 +111,3 @@ function fnTomarNombres() {
   
     mainView.router.navigate('/juego/');
 }
-
-/*valorTotal = $$('#J'+Casilla).val(valorElegido+20)
-//valorElegido = parseInt(valorElegido)
-console.log('El valor total' +valorTotal);
-//valorTotal = valorDefecto + valorElegido;
-
-//$$('#J'+Casilla).val(valorTotal);*/ 
