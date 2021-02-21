@@ -1,4 +1,3 @@
-  
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
@@ -24,8 +23,7 @@ var app = new Framework7({
 var mainView = app.views.create('.view-main');
 var nombre1 = "";
 var nombre2 = "";
-var seleccion ="";
-var seleccion2="";
+var Casilla ="";
 
 
 // Handle Cordova Device Ready Event
@@ -45,42 +43,48 @@ $$(document).on('page:init', '.page[data-name="juego"]', function (e) {
     console.log("vista juego");
 
     /* JUAN: Le indicamos que escriba el nombre de cada jugador*/
-    $$('#J1').html('<p>'+nombre1+'</p>');
-    $$('#J2').html('<p>'+nombre2+'</p>');
+    $$('#n1').html('<p>'+nombre1+'</p>');
+    $$('#n2').html('<p>'+nombre2+'</p>');
+    //FUNCIONA NO TOCAR.
+    $$('.popup-open').on('click', fnCasilla);
 
-    /* JUAN: Agrego la funcion, cuando tocamos cada input para luego enviar valor de los dados en EnviaValor*/
-    $$('#J11').on('click', fnSeleccionaValorDadosJ1 ('11'));
-    $$('#J12').on('click', fnSeleccionaValorDadosJ1 ('12'));
-    $$('#J13').on('click', fnSeleccionaValorDadosJ1 ('13'));
-    $$('#J14').on('click', fnSeleccionaValorDadosJ1 ('14'));
-    $$('#J15').on('click', fnSeleccionaValorDadosJ1 ('15'));
-    $$('#J16').on('click', fnSeleccionaValorDadosJ1 ('16'));
+    function fnCasilla (){
+      Casilla = this.id;
+      console.log('Entre en esta casilla'+Casilla);
 
-    $$('#J17').on('click', fnSeleccionaValorJuegosJ1 ('17'));
-    $$('#J18').on('click', fnSeleccionaValorJuegosJ1 ('18'));
-    $$('#J19').on('click', fnSeleccionaValorJuegosJ1 ('19'));
-    $$('#J20').on('click', fnSeleccionaValorJuegosJ1 ('20'));
-    $$('#J21').on('click', fnSeleccionaValorJuegosJ1 ('21'));
+    }
+        
+        $$('.my-popup').on('popup:opened', function(){
+          console.log('Vista PopUp1');
+          $$('.Dado').on('click', function fnValor(){
+            datoElegido = this.id;
+            //calcularDato(elDatoTocado );
+            console.log('Estoy poniendo este dato' +datoElegido);
+            $$('#dt'+Casilla).val(datoElegido);
+             
+          });
+        });
+    //-----------------------
 
-    $$('#J22').on('click', fnSeleccionaValorDadosJ2 ('22'));
-    $$('#J23').on('click', fnSeleccionaValorDadosJ2 ('23'));
-    $$('#J24').on('click', fnSeleccionaValorDadosJ2 ('24'));
-    $$('#J25').on('click', fnSeleccionaValorDadosJ2 ('25'));
-    $$('#J26').on('click', fnSeleccionaValorDadosJ2 ('26'));
-    $$('#J27').on('click', fnSeleccionaValorDadosJ2 ('27'));
 
-    $$('#J28').on('click', fnSeleccionaValorJuegosJ2 ('28'));
-    $$('#J29').on('click', fnSeleccionaValorJuegosJ2 ('29'));
-    $$('#J30').on('click', fnSeleccionaValorJuegosJ2 ('30'));
-    $$('#J31').on('click', fnSeleccionaValorJuegosJ2 ('31'));
-    $$('#J32').on('click', fnSeleccionaValorJuegosJ2 ('32'));
 
-    
 
-    /* JUAN: Agrego el boton terminar para que llame a funcion */
-    $$('#btnTerminar').on('click', fnMuestraGanador);
+      $$('.my-popup2').on('popup:opened', function(){
+        console.log('Vista PopUp2');
+        //escalera vale "20", servida "25"
+        $$('.Jugada').on('click', function fnValor(){
+          //El valor de los popupts
+          valorElegido = this.value;
+          valorTotal = 0;
+          //valorTotal = parseInt(valorTotal);
+          valorTotal = $$('#dt'+Casilla).val()
+          
+
+          $$('#dt'+Casilla).val(valorTotal);
+
+        });
+      });
     });
-
 $$(document).on('page:init', '.page[data-name="index"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
     console.log("vista index")
@@ -98,83 +102,9 @@ function fnTomarNombres() {
     mainView.router.navigate('/juego/');
 }
 
+/*valorTotal = $$('#J'+Casilla).val(valorElegido+20)
+//valorElegido = parseInt(valorElegido)
+console.log('El valor total' +valorTotal);
+//valorTotal = valorDefecto + valorElegido;
 
-//---------------------------- FUNCIONES DADOS------------------------------------------------------
-
-/* JUAN: Aca hago una funcion que lo que hace, es del documento juego.html, toma "seleccion" que es el formulario
-de opciones del popup, recorre todos los boton radio (que tienen el name=opcion), y le decimos que si hay una opcion
-con el valor "checked" (el radio seleccionado), que la guarde en una variable global "seleccion". Luego se lo
-enviamos a #J11 como valor para que quede en el div
-DAI: agregue un if/else para poder agregar las opciones del otro pop-up, el de las categorias armadas*/
-
-
-//---------------------------- JUGADOR 1
-
-function fnSeleccionaValorDadosJ1(num) {
-  $$('#btnCerrar').on('click', fnEnviaValorDadosJ1(num));
-}
-
-function fnEnviaValorDadosJ1(num) {
-  for (var i = 0; i < document.seleccion.opcion.length; i++) {
-    if (document.seleccion.opcion[i].checked)
-      break;
-  }
-  seleccion = document.seleccion.opcion[i].value
-  $$('#J'+ num).val(seleccion);
-}
-
-//---------------------------- JUGADOR 2
-
-function fnSeleccionaValorDadosJ2(num) {
-  $$('#btnCerrar').on('click', fnEnviaValorDadosJ2(num));
-}
-
-function fnEnviaValorDadosJ2(num) {
-  for (var i = 0; i < document.seleccion.opcion.length; i++) {
-    if (document.seleccion.opcion[i].checked)
-      break;
-  }
-  seleccion = document.seleccion.opcion[i].value
-  $$('#J' + num).val(seleccion);
-}
-
-//---------------------------- FUNCIONES JUEGOS ARMADOS-------------------------------------
-
-//---------------------------- JUGADOR 1
-
-function fnSeleccionaValorJuegosJ1(num) {
-  $$('#btnCerrar2').on('click', fnEnviaValorJuegosJ1(num));
-}
-
-function fnEnviaValorJuegosJ1(num) {
-  for (var i = 0; i < document.seleccion2.opcion2.length; i++) {
-    if (document.seleccion2.opcion2[i].checked)
-      break;
-  }
-  seleccion2 = document.seleccion2.opcion2[i].value
-  $$('#J' + num).val(seleccion2);
-}
-
-//---------------------------- JUGADOR 2
-
-function fnSeleccionaValorJuegosJ2(num) {
-  $$('#btnCerrar2').on('click', fnEnviaValorJuegosJ2(num));
-}
-
-function fnEnviaValorJuegosJ2(num) {
-  for (var i = 0; i < document.seleccion2.opcion2.length; i++) {
-    if (document.seleccion2.opcion2[i].checked)
-      break;
-  }
-  seleccion2 = document.seleccion2.opcion2[i].value
-  $$('#J' + num).val(seleccion2);
-}
-
-
-// --------------------------FUNCION MUESTRA GANADOR-------------------------------------------
-
-function fnMuestraGanador() {
-  /* JUAN: ACA DEBERIA MOSTRAR EL MENSAJE DEL GANADOR, RECIBIENDO ALGUN PARAMETRO... Se podria imprimir un DIV
-  con el mensaje en Juego.html (Con un OK, que si lo toco va al index nuevamente)*/
-  /*ACA PODRIA CARGAR LA VISTA DEL INDEX: mainView.router.navigate('/index/');*/
-}
+//$$('#J'+Casilla).val(valorTotal);*/ 
